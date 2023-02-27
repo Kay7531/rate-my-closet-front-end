@@ -21,7 +21,7 @@ import * as profileService from './services/profileService'
 import './App.css'
 
 // types
-import { User, Profile } from './types/models'
+import { User, Profile, Outfit } from './types/models'
 
 function App(): JSX.Element {
   const navigate = useNavigate()

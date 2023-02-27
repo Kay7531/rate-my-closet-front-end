@@ -4,6 +4,18 @@
 
 /* ---------===== auth forms =====--------- */
 
+export interface NewOutfitFormData {
+  photo: string;
+  description: string;
+}
+export type NewOutfitFormElements = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+
+export interface NewCommentFormData {
+  content: string;
+  rating: number;
+}
+
+
 export interface LoginFormData {
   email: string;
   password: string;
@@ -25,3 +37,4 @@ export interface ChangePasswordFormData {
 export interface PhotoFormData {
   photo: File | null;
 }
+
