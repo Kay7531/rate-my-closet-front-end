@@ -34,6 +34,7 @@ function App(): JSX.Element {
       try {
         const profileData: Profile[] = await profileService.getAllProfiles()
         setProfiles(profileData)
+        
       } catch (error) {
         console.log(error)
       }
