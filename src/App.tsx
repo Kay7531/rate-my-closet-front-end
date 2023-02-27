@@ -25,6 +25,7 @@ import './App.css'
 
 // types
 import { User, Profile, Outfit } from './types/models'
+import {NewOutfitFormData, PhotoFormData} from './types/forms'
 
 function App(): JSX.Element {
   const navigate = useNavigate()
@@ -45,6 +46,7 @@ function App(): JSX.Element {
     user ? fetchOutfits() : setOutfits([])
   }, [user])
 
+  
   const handleLogout = (): void => {
     authService.logout()
     setUser(null)

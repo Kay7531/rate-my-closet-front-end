@@ -5,7 +5,6 @@
 /* ---------===== auth forms =====--------- */
 
 export interface NewOutfitFormData {
-  photo: string;
   description: string;
 }
 export type NewOutfitFormElements = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement

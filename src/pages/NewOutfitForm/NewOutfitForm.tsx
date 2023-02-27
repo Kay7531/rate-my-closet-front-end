@@ -7,26 +7,55 @@ import * as outfitService from '../../services/outfitService'
 import { NewOutfitFormData, PhotoFormData, NewOutfitFormElements } from "../../types/forms"
 
 interface NewOutfitFormProps {
-    NewOutfitFormData: NewOutfitFormData;
+    newOutfitFormData: NewOutfitFormData;
+    photoFormData: PhotoFormData
 }
 
-const NewOutfitForm = (props: NewOutfitFormData): JSX.Element => {
-const [form, setForm] = useState({
-    description: '',
-})
-const [photoData, setPhotoData] = useState<PhotoFormData>({
-    photo: null
-})
-const handleChange = ({}) => {
 
-}
-const handleSubmit = () => {
+const NewOutfitForm = (props: NewOutfitFormProps): JSX.Element => {
+    const navigate = useNavigate()
+    const [form, setForm] = useState({
+        description: '',
+    })
+    const [photoData, setPhotoData] = useState<PhotoFormData>({
+        photo: null
+    })
+    const [photoPreview, setPhotoPreview] = useState<string>('')
+    const [isSubmitted, setIsSubmitted] = useState(false)
 
-}
+    const handleChange = (evt: React.ChangeEvent<NewOutfitFormElements>) => {
+        setForm({ ...form, [evt.target.name]: evt.target.value })
+    }
 
-const handleChangePhoto = () => {
 
-}
+
+    const handleChangePhoto = (evt: React.ChangeEvent<HTMLInputElement>) => {
+        const reader = new FileReader()
+        if (evt.target.files) reader.readAsDataURL(evt.target.files[0])
+        reader.onload = () => {
+            const imageUrl = reader.result as string
+            setPhotoPreview(imageUrl)
+        }
+        if (evt.target.files) setPhotoData({ photo: evt.target.files.item(0) })
+    }
+
+    const handleSubmit = async (e: React.FormEvent): Promise<void> => {
+        e.preventDefault()
+        console.log(form);
+        console.log(photoData);
+        if (isSubmitted) return
+        try {
+            //   setIsSubmitted(true)
+            await outfitService.create(form, photoData)
+            navigate('/')
+        } catch (err) {
+            console.log(err)
+            //   setIsSubmitted(false)
+        }
+    }
+
+    
+
     return (
         <main>
             {/* <form onSubmit={{ handleSubmit }}
