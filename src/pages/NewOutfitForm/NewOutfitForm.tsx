@@ -7,12 +7,16 @@ import * as outfitService from '../../services/outfitService'
 import { NewOutfitFormData, PhotoFormData, NewOutfitFormElements } from "../../types/forms"
 
 interface NewOutfitFormProps {
-    NewOutfitFormData: NewOutfitFormData
+    NewOutfitFormData: NewOutfitFormData;
 }
 
 const NewOutfitForm = (props: NewOutfitFormData): JSX.Element => {
-const [form, setForm] = useState()
-const [photoData, setPhotoData] = useState({})
+const [form, setForm] = useState({
+    description: '',
+})
+const [photoData, setPhotoData] = useState<PhotoFormData>({
+    photo: null
+})
 const handleChange = ({}) => {
 
 }
@@ -21,7 +25,7 @@ const handleSubmit = () => {
 }
 
 const handleChangePhoto = () => {
-    
+
 }
     return (
         <main>
