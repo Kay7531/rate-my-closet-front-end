@@ -76,6 +76,14 @@ function App(): JSX.Element {
             </ProtectedRoute>
           }
         />
+          <Route
+          path="/outfits/new"
+          element={
+            <ProtectedRoute user={user}>
+              <NewOutfitForm/>
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/change-password"
           element={
