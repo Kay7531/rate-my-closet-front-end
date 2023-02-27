@@ -16,6 +16,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
+import * as outfitService from './services/outfitService'
 
 // stylesheets
 import './App.css'
