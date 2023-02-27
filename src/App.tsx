@@ -29,19 +29,19 @@ function App(): JSX.Element {
   const navigate = useNavigate()
   
   const [user, setUser] = useState<User | null>(authService.getUser())
-  const [profiles, setProfiles] = useState<Profile[]>([])
+  const [outfits, setOutfits] = useState<Outfit[]>([])
 
   useEffect((): void => {
-    const fetchProfiles = async (): Promise<void> => {
+    const fetchOutfits = async (): Promise<void> => {
       try {
-        const profileData: Profile[] = await profileService.getAllProfiles()
-        setProfiles(profileData)
+        const outfitData: Outfit[] = await outfitService.index()
+        setOutfits(outfitData)
         
       } catch (error) {
         console.log(error)
       }
     }
-    user ? fetchProfiles() : setProfiles([])
+    user ? fetchOutfits() : setOutfits([])
   }, [user])
 
   const handleLogout = (): void => {
@@ -68,10 +68,10 @@ function App(): JSX.Element {
           element={<Login handleAuthEvt={handleAuthEvt} />}
         />
         <Route
-          path="/profiles"
+          path="/outfits"
           element={
             <ProtectedRoute user={user}>
-              <Profiles  profiles={profiles}/>
+              <AllOutfits outfits={outfits}/>
             </ProtectedRoute>
           }
         />
