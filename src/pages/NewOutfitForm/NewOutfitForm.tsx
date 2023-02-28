@@ -6,13 +6,11 @@ import * as outfitService from '../../services/outfitService'
 //Types
 import { NewOutfitFormData, PhotoFormData, NewOutfitFormElements } from "../../types/forms"
 
-interface NewOutfitFormProps {
-    newOutfitFormData: NewOutfitFormData;
-    photoFormData: PhotoFormData
-}
 
 
-const NewOutfitForm = (props: NewOutfitFormProps): JSX.Element => {
+
+const NewOutfitForm = (): JSX.Element => {
+    
     const navigate = useNavigate()
     const [form, setForm] = useState({
         description: '',
@@ -57,20 +55,35 @@ const NewOutfitForm = (props: NewOutfitFormProps): JSX.Element => {
     
 
     return (
-        <main>
-            {/* <form onSubmit={{ handleSubmit }}
-           <label htmlFor="text-input"></label>
+       <>
+            <form onSubmit={ handleSubmit }>
+           <label htmlFor="description">Description</label>
+            <div>
             <input
                 required
                 type="text"
                 name="description"
                 id="description-input"
                 value={form.description}
-                placeholder="Location"
-                onChange={handleChange}
-            />
-        </form> */}
-        </main >
+                placeholder="Describe the fit"
+                onChange={handleChange} 
+                />
+            </div>
+            <label htmlFor="photo-upload" className="form-label">
+						Upload Photo
+					</label>
+         
+					<input
+						type="file"
+						className="form-control"
+						id="photo-upload"
+						name="photo"
+						multiple onChange={handleChangePhoto}
+					/>
+				<button type="submit">SUBMIT</button>
+        </form>
+        </>
+       
     )
 }
 

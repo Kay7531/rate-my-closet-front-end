@@ -16,8 +16,10 @@ const AllOutfits = (props: OutfitsProps): JSX.Element => {
       {outfits.map((outfit: Outfit) =>
         <p key={outfit.id}>
         {outfit.description}
-        {outfit.photo}
+        <img src={outfit.photo} alt="" />
         </p>
+        
+        
       )}
     </>
   )

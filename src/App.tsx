@@ -32,6 +32,7 @@ function App(): JSX.Element {
   
   const [user, setUser] = useState<User | null>(authService.getUser())
   const [outfits, setOutfits] = useState<Outfit[]>([])
+ 
 
   useEffect((): void => {
     const fetchOutfits = async (): Promise<void> => {
