@@ -50,9 +50,42 @@ async function index(): Promise<Outfit[]> {
     }
   }
   
+  async function update(formData: NewOutfitFormData, photoFormData: PhotoFormData, outfitId: number) {
+    try {
+      const res = await fetch(`${BASE_URL}/${outfitId}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${tokenService.getToken()}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData),
+      })
+      const post = await res.json()
+      if (photoFormData.photo) {
+        const photoData = new FormData()
+        photoData.append('photo', photoFormData.photo)
+        await addPhoto(photoData, post[1][0].id)
+      }
+    } catch (error) {
+      throw(error)
+    }
+  }
+  async function deleteOutfit(postId: number): Promise<number> {
+    try {
+      const res = await fetch(`${BASE_URL}/${postId}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
+      })
+      return await res.json()
+    } catch (error) {
+      throw(error)
+    }
+  }
 
   export {
     index,
     create,
-    addPhoto
+    addPhoto,
+    update,
+    deleteOutfit
   }
