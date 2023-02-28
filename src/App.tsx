@@ -10,6 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import AllOutfits from './pages/AllOutfits/AllOutfits'
 import NewOutfitForm from './pages/NewOutfitForm/NewOutfitForm'
+import EditOutfitForm from './pages/EditOutfitForm/EditOutfitForm'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -46,7 +47,18 @@ function App(): JSX.Element {
     }
     user ? fetchOutfits() : setOutfits([])
   }, [user])
+  
+  const handleUpdateOutfit = async( formData: NewOutfitFormData, photoFormData: PhotoFormData, outfitId: number): Promise<void> => {
+    try {
+      const updatedOutfit = await outfitService.update(formData, photoFormData, outfitId)
 
+      setOutfits(outfits.map((outfit):(void | Outfit) => (
+        outfit.id === updatedOutfit.id ? updatedOutfit : outfit
+      )))
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   const handleLogout = (): void => {
     authService.logout()
@@ -84,6 +96,14 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <NewOutfitForm/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/outfits/:outfitId/edit"
+          element={
+            <ProtectedRoute user={user}>
+              <EditOutfitForm/>
             </ProtectedRoute>
           }
         />
