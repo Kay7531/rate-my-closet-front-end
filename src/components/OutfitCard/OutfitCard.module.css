@@ -20,5 +20,10 @@ img {
     display: flex;
     flex-direction: row;
     margin-top: 10px;
-    gap:10px
+    gap:15px
+}
+
+#actions{
+    display: flex;
+    flex-direction: row;
 }

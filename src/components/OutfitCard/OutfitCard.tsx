@@ -17,17 +17,17 @@ interface OutfitCardProps {
 }
 
 const OutfitCard = (props:OutfitCardProps): JSX.Element => {
-    const {outfit, handleDeleteOutfit, profile, user} = props
+    const {outfit, handleDeleteOutfit} = props
     return(
         <>
         <div className={styles.container}>
         
-        <img id="outfit" src={outfit.photo} alt="" />
+        <img style={{objectFit:"cover"}}id="outfit" src={outfit.photo} alt="" />
         <section className={styles.author}>
             <div id='poster'>
-            <img style={{width:50, height:50, objectFit:"cover"}}src="public/final-profile icon _prev_ui.png" alt="" />
+            <img style={{width:50, height:50, objectFit:"cover"}}src="/final-profile icon _prev_ui.png" alt="" />
             </div>
-        <p>{outfit.description}</p>
+        <p style={{width:300}}>{outfit.description}</p>
         <div id="actions">
         <button style={{backgroundColor: 'gray', borderRadius:50, height:25}}onClick={(evt) => handleDeleteOutfit(evt, outfit.id)}> <FontAwesomeIcon icon={faCancel} /></button>
         <Link style={{textDecoration:'none', color: 'grey', fontSize:20}} to = {`/outfits/${outfit.id}/edit`} state={{outfit}}> <FontAwesomeIcon icon={faEdit} /></Link>
