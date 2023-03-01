@@ -14,7 +14,7 @@ const OutfitCard = (props:OutfitCardProps): JSX.Element => {
         <>
         <div className={styles.container}>
         
-        <img src={outfit.photo} alt="" />
+        <img id="outfit" src={outfit.photo} alt="" />
         {outfit.description}
         <button onClick={(evt) => handleDeleteOutfit(evt, outfit.id)}>X</button>
         <Link to = {`/outfits/${outfit.id}/edit`} state={{outfit}}> Edit </Link>

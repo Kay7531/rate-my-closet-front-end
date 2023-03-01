@@ -1,6 +1,6 @@
 // npm modules
-import { NavLink } from 'react-router-dom'
-
+import { NavLink,Link} from 'react-router-dom'
+import styles from './NavBar.module.css'
 // types
 import { User } from '../../types/models'
 
@@ -14,22 +14,29 @@ const NavBar = (props: NavBarProps): JSX.Element => {
   
   return (
     <nav>
+      <div className={styles.logo} style={{display:"flex", flexDirection:"row", justifyContent:'space-between', gap: 40}}>
+        <Link to="/"><img style={{width: 100, height:100, objectFit:"cover"}}src="public/assets/Screen Shot 2023-03-01 at 12.03.32 AM.png" alt="" /></Link>
+       
+      </div>
       {user ?
-        <ul>
-          <li>Welcome, {user.name}</li>
-          <li><NavLink to="/outfits">Outfits</NavLink></li>
-          <li><NavLink to="/outfits/new">Post Outfit</NavLink></li>
+        <ul className={styles.container}>
+           {/* <p style={{marginTop:30, fontSize:20 }}>Welcome, {user.name}</p> */}
+          
+          <NavLink style={{textDecoration: 'none', color: 'black'}} to="/outfits"> OUTFITS </NavLink>
+          <NavLink style={{textDecoration: 'none', color: 'black'}} to="/outfits/new">POST</NavLink>
           {/* <li><NavLink to="/profiles">Profiles</NavLink></li> */}
-          <li><NavLink to="/change-password">Change Password</NavLink></li>
-          <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
+          {/* <NavLink style={{textDecoration: 'none', color: 'black'}} to="/change-password">Change password</NavLink> */}
+          <NavLink style={{textDecoration: 'none', color: 'black'}} to="" onClick={handleLogout}>LOG OUT</NavLink>
           
-          
-        </ul>
+          </ul>
+        
+        
       :
-        <ul>
-          <li><NavLink to="/login">Log In</NavLink></li>
-          <li><NavLink to="/signup">Sign Up</NavLink></li>
+        <ul >
+          <NavLink style={{textDecoration: 'none', color: 'black'}} to="/login">Log In</NavLink>
+          <NavLink style={{textDecoration: 'none', color: 'black'}} to="/signup">Sign Up</NavLink>
         </ul>
+        
       }
     </nav>
   )
