@@ -9,11 +9,11 @@ import * as profileService from '../../services/profileService'
 import { Profile } from '../../types/models'
 
 interface ProfilesProps {
-	profile: Profile;
+	profiles: Profile[];
 }
 
 const Profiles = (props: ProfilesProps): JSX.Element => {
-  const { profile } = props
+  const { profiles } = props
   
 
   // if(!profile.length) return <p>No profiles yet</p>
