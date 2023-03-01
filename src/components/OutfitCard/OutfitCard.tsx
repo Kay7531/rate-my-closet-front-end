@@ -25,7 +25,7 @@ const OutfitCard = (props:OutfitCardProps): JSX.Element => {
         <img style={{objectFit:"cover"}}id="outfit" src={outfit.photo} alt="" />
         <section className={styles.author}>
             <div id='poster'>
-            <img style={{width:50, height:50, objectFit:"cover"}}src="/final-profile icon _prev_ui.png" alt="" />
+            <img style={{width:50, height:50, objectFit:"cover"}}src="/assets/final-profile icon _prev_ui.png" alt="" />
             </div>
         <p style={{width:300}}>{outfit.description}</p>
         <div id="actions">

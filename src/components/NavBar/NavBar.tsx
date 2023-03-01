@@ -15,7 +15,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
   return (
     <nav>
       <div className={styles.logo} style={{display:"flex", flexDirection:"row", justifyContent:'space-between', gap: 40}}>
-        <Link to="/"><img style={{width: 100, height:100, objectFit:"cover"}}src="public/assets/Screen Shot 2023-03-01 at 12.03.32 AM.png" alt="" /></Link>
+        <Link to="/"><img style={{width: 100, height:100, objectFit:"cover"}}src="/assets/rate-closet-logo.png" alt="" /></Link>
        
       </div>
       {user ?
