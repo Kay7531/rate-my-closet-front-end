@@ -23,7 +23,7 @@ const Landing = (props: LandingProps): JSX.Element => {
       <h2>Get started here</h2>
       <Link to= "/signup"><button style={{width:200, height:50, fontSize:20}}>Rate My Closet</button></Link>
       </div>
-     <img style= {{width:550, height:550}}src="public/lfash-anding.png" alt="" />
+     <img style= {{width:550, height:550}}src="/assets/lfash-anding.png" alt="" />
     </main>
   )
 }
