@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styles from './OutfitCard.module.css'
+import { useParams, Link } from "react-router-dom"
 
 import {Outfit} from '../../types/models'
 interface OutfitCardProps {
@@ -16,6 +17,7 @@ const OutfitCard = (props:OutfitCardProps): JSX.Element => {
         <img src={outfit.photo} alt="" />
         {outfit.description}
         <button onClick={(evt) => handleDeleteOutfit(evt, outfit.id)}>X</button>
+        <Link to = {`/outfits/${outfit.id}/edit`} state={{outfit}}> Edit </Link>
         </div>
         </>
     )

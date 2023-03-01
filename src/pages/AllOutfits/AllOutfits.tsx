@@ -7,22 +7,24 @@ import { Outfit } from '../../types/models'
 
 interface OutfitsProps {
   outfits: Outfit[];
+  handleDeleteOutfit: (evt: React.MouseEvent, outfitId:number)=> void;
+  
 }
 
 const AllOutfits = (props: OutfitsProps): JSX.Element => {
-  const { outfits } = props
+  const { outfits, handleDeleteOutfit} = props
 
   if (!outfits.length) return <p>No outfits yet</p>
 
-  const handleDeleteOutfit = async (evt: React.MouseEvent, outfitId: number): Promise<void> => {
-    evt.preventDefault()
-    try {
-      await outfitService.deleteOutfit(outfitId)
+  // const handleDeleteOutfit = async (evt: React.MouseEvent, outfitId: number): Promise<void> => {
+  //   evt.preventDefault()
+  //   try {
+  //     await outfitService.deleteOutfit(outfitId)
       
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
 
   return (

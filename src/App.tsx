@@ -47,18 +47,32 @@ function App(): JSX.Element {
     }
     user ? fetchOutfits() : setOutfits([])
   }, [user])
-  
-  const handleUpdateOutfit = async( formData: NewOutfitFormData, photoFormData: PhotoFormData, outfitId: number): Promise<void> => {
-    try {
-      const updatedOutfit = await outfitService.update(formData, photoFormData, outfitId)
 
-      setOutfits(outfits.map((outfit):(void | Outfit) => (
-        outfit.id === updatedOutfit.id ? updatedOutfit : outfit
-      )))
+ 
+  
+  const handleUpdateOutfit = async( formData: NewOutfitFormData, photoFormData: PhotoFormData, outfitId: number ): Promise<void> => {
+    try {
+      console.log(outfitId)
+      const updatedOutfit = await outfitService.update(formData, photoFormData,outfitId )
+      const allOutfits = await outfitService.index()
+      setOutfits(allOutfits)
     } catch (error) {
       console.log(error);
     }
   }
+
+
+  const handleDeleteOutfit = async (evt: React.MouseEvent, outfitId: number): Promise<void> => {
+    evt.preventDefault()
+    try {
+      await outfitService.deleteOutfit(outfitId)
+      const allOutfits = await outfitService.index()
+      setOutfits(allOutfits)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   
   const handleLogout = (): void => {
     authService.logout()
@@ -87,7 +101,7 @@ function App(): JSX.Element {
           path="/outfits"
           element={
             <ProtectedRoute user={user}>
-              <AllOutfits outfits={outfits}/>
+              <AllOutfits outfits={outfits} handleDeleteOutfit={handleDeleteOutfit}/>
             </ProtectedRoute>
           }
         />
@@ -103,7 +117,7 @@ function App(): JSX.Element {
           path="/outfits/:outfitId/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditOutfitForm/>
+              <EditOutfitForm handleUpdateOutfit= {handleUpdateOutfit}/>
             </ProtectedRoute>
           }
         />

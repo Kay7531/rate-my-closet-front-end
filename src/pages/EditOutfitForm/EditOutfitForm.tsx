@@ -1,16 +1,22 @@
 import { useState } from "react"
-import { Link, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, Link} from 'react-router-dom'
+
 import styles from './EditOutfitForm.module.css'
 //Services
 import * as outfitService from '../../services/outfitService'
 //Types
 import { NewOutfitFormData, PhotoFormData, NewOutfitFormElements } from "../../types/forms"
 
+interface EditOutfitProps {
+	handleUpdateOutfit: (formData:NewOutfitFormData,photoData:PhotoFormData, outfitId:number)=> void;
+}
 
 
 
-const EditOutfitForm = (): JSX.Element => {
+const EditOutfitForm = (props: EditOutfitProps): JSX.Element => {
+    const location = useLocation()
     
+    const {outfit} = location.state
     const navigate = useNavigate()
     const [form, setForm] = useState({
         description: '',
@@ -19,12 +25,13 @@ const EditOutfitForm = (): JSX.Element => {
         photo: null
     })
     const [photoPreview, setPhotoPreview] = useState<string>('')
-    const [isSubmitted, setIsSubmitted] = useState(false)
+   
 
-    const handleChange = (evt: React.ChangeEvent<NewOutfitFormElements>) => {
+    const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
         setForm({ ...form, [evt.target.name]: evt.target.value })
+        console.log("this is form",form)
     }
-
+// console.log ("this is outfit", outfit)
 
 
     const handleChangePhoto = (evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,16 +48,21 @@ const EditOutfitForm = (): JSX.Element => {
         e.preventDefault()
         console.log(form);
         console.log(photoData);
-        if (isSubmitted) return
-        try {
-            //   setIsSubmitted(true)
-            await outfitService.create(form, photoData)
-            navigate('/')
-        } catch (err) {
-            console.log(err)
-            //   setIsSubmitted(false)
-        }
-    }
+        console.log(outfit.id)
+        props.handleUpdateOutfit(form, photoData, outfit.id)
+        navigate("/outfits")
+  }  
+
+    //     if (isSubmitted) return
+    //     try {
+    //         //   setIsSubmitted(true)
+    //         await outfitService.create(form, photoData)
+    //         navigate('/')
+    //     } catch (err) {
+    //         console.log(err)
+    //         //   setIsSubmitted(false)
+    //     }
+    // }
 
     
 
@@ -80,7 +92,7 @@ const EditOutfitForm = (): JSX.Element => {
 						name="photo"
 						multiple onChange={handleChangePhoto}
 					/>
-				<button type="submit">SUBMIT</button>
+				<button type="submit"> SUBMIT </button>
         </form>
         </>
        
