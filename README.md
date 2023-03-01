@@ -1,5 +1,5 @@
-# myDietFriend 
-## *(a macros and workout tracker)*
+# Rate My Closet
+
 ![A screenshot of landing](public/assets/landing-rate.png)
 ![A screenshot of index](public/assets/index-ate-closet.png)
 
