@@ -2,16 +2,23 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid gray;
-    width: 277px;
-    height: 380px;
-   
+    /* border: 1px solid gray; */
+    width: 500px;
+    height: 580px;
+    gap:15px;
+    padding-left: 20px;
+    font-family: Helvetica;
 }
 img {
-    width:277px;
-    height: 300px;
+    width:400px;
+    height: 400px;
     object-fit: cover;
     border-radius: 20px;
 
 }
-
+.author{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    gap:10px
+}

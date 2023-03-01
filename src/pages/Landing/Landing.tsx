@@ -7,11 +7,12 @@ import { Profiler } from 'react';
 
 interface LandingProps {
   user: User | null;
+  profile: Profile | null;
   
 }
 
 const Landing = (props: LandingProps): JSX.Element => {
-  const { user} = props
+  const { user, profile} = props
 
   return (
     <main className={styles.container}>

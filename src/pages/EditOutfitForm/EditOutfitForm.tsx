@@ -68,8 +68,10 @@ const EditOutfitForm = (props: EditOutfitProps): JSX.Element => {
 
     return (
        <>
+       <div className={styles.container}>
             <form onSubmit={ handleSubmit }>
-           <label htmlFor="description">Description</label>
+            <h2>Edit your fit.</h2>
+           <label htmlFor="description"></label>
             <div>
             <input
                 required
@@ -94,6 +96,7 @@ const EditOutfitForm = (props: EditOutfitProps): JSX.Element => {
 					/>
 				<button type="submit"> SUBMIT </button>
         </form>
+        </div>
         </>
        
     )

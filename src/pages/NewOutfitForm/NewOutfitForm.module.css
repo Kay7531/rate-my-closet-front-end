@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    justify-content: center;
+    margin: 90px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}
+
+button{
+    background-color: rgb(124, 195, 195);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+input{
+    border-radius:5px;
+    text-align: center;
+    height: 30px;
+    width:252.33px;
+    font-size: medium;
+    border: 2px solid gray
+}

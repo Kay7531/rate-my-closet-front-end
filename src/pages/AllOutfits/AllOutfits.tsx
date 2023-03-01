@@ -1,6 +1,7 @@
 import * as outfitService from '../../services/outfitService'
 //Components
 import OutfitCard from '../../components/OutfitCard/OutfitCard';
+import styles from './AllOutfits.module.css'
 
 // types
 import { Outfit } from '../../types/models'
@@ -29,17 +30,19 @@ const AllOutfits = (props: OutfitsProps): JSX.Element => {
 
   return (
     <>
-      <h1>Hello. This is a list of all the Outfits.</h1>
+    <div className= {styles.container}>
+      
       {outfits.map((outfit: Outfit) =>
       (<OutfitCard
         key={outfit.id}
         outfit={outfit} 
         handleDeleteOutfit ={handleDeleteOutfit}
         />
-
+       
 
 
       ))}
+       </div>
     </>
   )
 }

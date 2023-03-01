@@ -20,7 +20,7 @@ const NavBar = (props: NavBarProps): JSX.Element => {
       </div>
       {user ?
         <ul className={styles.container}>
-           {/* <p style={{marginTop:30, fontSize:20 }}>Welcome, {user.name}</p> */}
+           {/* <p style={{marginTop:30, fontSize:20 }}>Welcome, {user.name} </p> */}
           
           <NavLink style={{textDecoration: 'none', color: 'black'}} to="/outfits"> OUTFITS </NavLink>
           <NavLink style={{textDecoration: 'none', color: 'black'}} to="/outfits/new">POST</NavLink>
